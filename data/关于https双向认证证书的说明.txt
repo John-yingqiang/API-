@@ -1,0 +1,11 @@
+1.只有协议是https双向认证的，才将客户端的证书和密匙放在当前目录
+
+2.客户端的证书和密匙的文件名请按下列方式命名
+  客户端证书: newfile.crt.pem  客户端密匙: newfile.key.pem
+
+3.其他协议的，请不要在此目录放证书
+
+4.假如客户端证书是path.p12格式的，利用openssl就可以分离出证书和密匙
+    生成的client端的证书在windows上为p12格式，假如客户端证书为path.p12
+    openssl pkcs12 -in path.p12 -out newfile.crt.pem -clcerts -nokeys 客户端证书
+    openssl pkcs12 -in path.p12 -out newfile.key.pem -nocerts -nodes  客户端密匙
